@@ -1,11 +1,7 @@
 body {
   font-family: 'Karla', sans-serif;
-  margin-top: 3rem;
-  margin-bottom: 3rem;
-  margin-left: 5%;
-  margin-right: 5%;
+  margin: 3rem 5%;
 }
-
 
 h1,
 h2,
@@ -15,7 +11,6 @@ h5,
 h6 {
   font-family: 'Markazi Text', serif;
   letter-spacing: 2px;
-  ;
 }
 
 h1 {
@@ -33,7 +28,6 @@ h2 {
 p,
 ul {
   font-size: 1.25rem;
-  ;
 }
 
 a {
@@ -61,20 +55,17 @@ header img {
   height: auto;
 }
 
-
 nav {
   background-color: #495E57;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  margin-bottom: 0px;
+  margin: 1rem 0 0;
 }
 
 nav ul {
   list-style: none;
   font-size: 1.5rem;
   text-align: center;
-  padding-inline-start: 0rem;
-  margin-bottom: 0px;
+  padding-left: 0;
+  margin-bottom: 0;
 }
 
 nav ul li {
@@ -88,11 +79,8 @@ nav ul a {
   text-decoration: none;
 }
 
+nav ul a:hover,
 nav ul a:active {
-  text-decoration: underline;
-}
-
-nav ul a:hover {
   text-decoration: underline;
   text-decoration-thickness: 0.1rem;
 }
@@ -105,8 +93,7 @@ nav ul li.active a {
 section {
   display: flex;
   gap: 2rem 1rem;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin: 1rem 0;
   flex-direction: row;
 }
 
@@ -124,8 +111,7 @@ article ul {
 
 main article {
   border: 1px solid #EDEFEE;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding: 0 1rem;
 }
 
 figure {
@@ -137,25 +123,33 @@ label {
   display: block;
 }
 
-input {
-  width: 80%;
+input,
+textarea,
+select {
+  width: 100%;
   display: block;
-  padding: .5rem 1rem;
+  padding: 0.6rem 1rem;
   line-height: 1.5rem;
   box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 0.25rem;
 }
 
 #button {
-  padding: .5rem 1rem;
+  padding: 0.5rem 1rem;
   border: 1px solid #495E57;
   background-color: #495E57;
-  ;
   border-radius: 5px;
-  width: 80%;
+  width: 100%;
   font-size: 1.25rem;
-  display: block;
   color: #fff;
-  line-height: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#button:hover {
+  background-color: #333;
 }
 
 .hero {
@@ -165,7 +159,6 @@ input {
   color: white;
   min-height: 200px;
   text-align: center;
-  ;
 }
 
 .hero p {
@@ -183,7 +176,6 @@ input {
   padding: 8px;
   border: 3px solid #fff;
   text-align: center;
-  outline: none;
   text-decoration: none;
   margin: 1rem;
 }
@@ -210,12 +202,7 @@ footer img {
 }
 
 footer p {
-  border-top: #333333;
-  border-style: solid;
-  border-width: 0.1rem;
-  border-bottom: none;
-  border-left: none;
-  border-right: none;
+  border-top: 1px solid #333333;
   text-align: right;
   padding-top: 1rem;
 }
@@ -234,14 +221,12 @@ footer p {
 }
 
 .column figure {
-  padding: 0px 12px;
+  padding: 0 12px;
 }
-
 
 .videowrap {
   position: relative;
-  padding-bottom: 56.25%;
-  /* 16:9 */
+  padding-bottom: 56.25%; /* 16:9 */
   padding-top: 1rem;
   height: 0;
 }
@@ -260,6 +245,22 @@ footer p {
   font-size: 1rem;
 }
 
+/* ⭐ New Enhancements for Forms & Section Layouts */
+.form-section {
+  padding: 4rem 2rem;
+  background: #fefefe;
+}
+
+.form-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+/* 📱 Responsive */
 @media (max-width: 800px) {
   section {
     flex-direction: column;
@@ -270,11 +271,51 @@ footer p {
     width: 100%;
   }
 
-  input {
-    width: 100%;
-  }
-
+  input,
   #button {
     width: 100%;
   }
+}
+
+/* ✨ Animation for contact form */
+@keyframes fade-in-down {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-down {
+  animation: fade-in-down 0.8s ease-out;
+}
+
+/* 💬 Contact Info Card Styling */
+.contact-info-card {
+  background-color: #fff9db;
+  border: 1px solid #fcd34d;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+/* ❓ FAQ Accordion Styling */
+details summary {
+  cursor: pointer;
+  padding: 0.5rem;
+  font-weight: 600;
+  color: #444;
+}
+
+details[open] summary {
+  color: #111;
+}
+
+details p {
+  padding: 0.5rem 0 0.5rem 1rem;
+  color: #555;
 }

@@ -1,23 +1,56 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
-  <section>
-    <article>
-      <h1>About Us</h1>
-      <div class="row">
-        <div class="column">
-          <p>Based in Chicago, Illinois, Little Lemon is a family owned Mediterranean restaurant. We focus on traditional recipes served with a modern twist.</p>
-          <p>Our chefs draw inspiration from Italian, Greek, and Turkish culture. We have a menu of 12-15 items that we rotate seasonally.</p>
-          <p>The restaurant has a rustic and relaxed atmosphere with moderate prices. This makes it a popular place for a meal any time of the day.</p>
-          <p>Little Lemon is owned by two Italian brothers, Mario and Adrian. They moved to the United States to pursue their shared dream of owning a restaurant.</p>
-          <p>Mario crafts the menu using family recipes and his experience as a chef in Italy.</p>
-          <p>Adrian handles all the marketing for the restaurant. He led the effort to expand the menu beyond classic Italian to incorporate additional cuisines from the Mediterranean region.</p>
-        </div>
-        <div class="column">
-          <figure class="figure">
-            <img src="{% static 'img/mario-and-adrian.jpg' %}" alt="Mario and Adrian, the owners of Little Lemon" />
-            <figcaption class="figure-caption">Little Lemon owners Mario and Adrian.</figcaption>
-          </figure>
-        </div>
-      </div>
-    </article>
-  </section>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section class="bg-gray-50 py-12 px-6">
+  <article class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-start">
+    <!-- Text Content -->
+    <div>
+      <h1 class="text-4xl font-bold text-gray-800 mb-6">About Us</h1>
+      <p class="mb-4 text-gray-700">
+        Located in the heart of Westlands, Nairobi, Mama Mia brings the soul of the Mediterranean to Kenya. We specialize in authentic Italian, Greek, and Turkish cuisine prepared with a fresh modern flair.
+      </p>
+      <p class="mb-4 text-gray-700">
+        Our rotating seasonal menu features 12–15 curated dishes made from quality local and imported ingredients, ensuring every visit is a new experience.
+      </p>
+      <p class="mb-4 text-gray-700">
+        Whether you're joining us for a light lunch, a cozy dinner, or a celebration, Mama Mia offers a warm, rustic atmosphere with exceptional hospitality.
+      </p>
+      <p class="mb-4 text-gray-700">
+        Passionate about taste and tradition, our kitchen is led by two of Nairobi’s most talented head chefs who infuse every plate with excellence and heart.
+      </p>
+    </div>
+
+    <!-- Image -->
+    <div class="text-center">
+      <figure class="rounded overflow-hidden shadow-md">
+        <img src="{% static 'img/mario-and-adrian.jpg' %}" alt="Head Chefs of Mama Mia" class="w-full object-cover" />
+        <figcaption class="text-sm text-gray-600 py-2 bg-gray-100">Our 2 Head Chefs—masters of Mediterranean cuisine.</figcaption>
+      </figure>
+    </div>
+  </article>
+</section>
+
+<!-- ⭐ Testimonials Section -->
+<section class="bg-white py-12 px-6 border-t">
+  <div class="max-w-4xl mx-auto text-center">
+    <h2 class="text-3xl font-bold text-yellow-800 mb-8">What Our Guests Say</h2>
+
+    <div class="space-y-8 text-gray-700">
+      <blockquote class="border-l-4 border-yellow-500 pl-4 italic">
+        “The best Mediterranean flavors I’ve tasted in Nairobi! The Beef Moussaka is a must-try.”
+        <footer class="mt-2 text-sm font-semibold text-gray-600">— Kevin Otieno</footer>
+      </blockquote>
+
+      <blockquote class="border-l-4 border-yellow-500 pl-4 italic">
+        “Charming ambiance and truly authentic food. Mama Mia has become our family’s weekend spot.”
+        <footer class="mt-2 text-sm font-semibold text-gray-600">— Sharon Wambui</footer>
+      </blockquote>
+
+      <blockquote class="border-l-4 border-yellow-500 pl-4 italic">
+        “From the service to the desserts, everything is delightful. I keep coming back for the Baklava!”
+        <footer class="mt-2 text-sm font-semibold text-gray-600">— Brian Njoroge</footer>
+      </blockquote>
+    </div>
+  </div>
+</section>
 {% endblock %}

@@ -2,41 +2,50 @@
 {% load static %}
 
 {% block content %}
-  <main>
-    <section>
-      <article class="hero">
-        <h1 class="heading_shadow">SPECIAL OFFER</h1>
-        <p>30% Off This Weekend</p>
-        <a href="/book" class="cta">Book now</a>
-      </article>
-    </section>
-    <section>
-      <article>
-        <h2>Our New Menu</h2>
-        <img src="{% static 'img/grill.jpg' %}" alt="Grilled food" />
-        <p>Our menu consists of 12-15 seasonal items based on Italian, Greek, and Turkish culture.</p>
-        <p>
-          <a href="{% url 'menu' %}">See our new menu</a>
-        </p>
-      </article>
-      <article>
-        <h2>Book a table</h2>
-        <img src="{% static 'img/salad.jpg' %}" alt="Salad" />
-        <p>Reserve your table for an Italian, Greek, and Turkish dining experience.</p>
-        <p>
-          <a href="{% url 'book' %}">Book your table now</a>
-        </p>
-      </article>
-      <article>
-        <h2>Opening Hours</h2>
-        <img src="{% static 'img/head_chef.jpg' %}" alt="Head chef" />
-        <p>The Little Lemon Restaurant is open 7 days a week, except for public holidays.</p>
-        <ul>
-          <li>Mon - Fri: 2pm - 10pm</li>
-          <li>Sat: 2pm - 11pm</li>
-          <li>Sun: 2pm - 9pm</li>
-        </ul>
-      </article>
-    </section>
-  </main>
+<main class="bg-gray-50 text-gray-800">
+
+  <!-- Hero Section with online background image -->
+  <section class="bg-cover bg-center py-28 text-white" style="background-image: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1470&q=80')">
+    <article class="container mx-auto px-6 text-center bg-black bg-opacity-60 p-10 rounded">
+      <h1 class="text-5xl font-extrabold mb-4 heading_shadow">SPECIAL OFFER</h1>
+      <p class="text-xl mb-6">30% Off This Weekend</p>
+      <a href="{% url 'book' %}" class="bg-yellow-400 text-black font-semibold py-3 px-6 rounded shadow hover:bg-yellow-300 transition">
+        Book now
+      </a>
+    </article>
+  </section>
+
+  <!-- Features Section -->
+  <section class="grid md:grid-cols-3 gap-8 container mx-auto px-6 py-12">
+
+    <!-- New Menu -->
+    <article class="bg-white rounded shadow p-6">
+      <h2 class="text-2xl font-bold mb-4">Our New Menu</h2>
+      <img src="{% static 'img/grill.jpg' %}" alt="Grilled food" class="w-full h-48 object-cover rounded mb-4" />
+      <p class="mb-2">Our menu consists of 12–15 seasonal items based on Italian, Greek, and Turkish culture.</p>
+      <a href="{% url 'menu' %}" class="text-blue-600 hover:underline">See our new menu →</a>
+    </article>
+
+    <!-- Book a Table -->
+    <article class="bg-white rounded shadow p-6">
+      <h2 class="text-2xl font-bold mb-4">Book a table</h2>
+      <img src="{% static 'img/salad.jpg' %}" alt="Salad" class="w-full h-48 object-cover rounded mb-4" />
+      <p class="mb-2">Reserve your table for an Italian, Greek, and Turkish dining experience.</p>
+      <a href="{% url 'book' %}" class="text-blue-600 hover:underline">Book your table now →</a>
+    </article>
+
+    <!-- Opening Hours -->
+    <article class="bg-white rounded shadow p-6">
+      <h2 class="text-2xl font-bold mb-4">Opening Hours</h2>
+      <img src="{% static 'img/head_chef.jpg' %}" alt="Head chef" class="w-full h-48 object-cover rounded mb-4" />
+      <p class="mb-2">The Mama Mia Restaurant is open 7 days a week, except for public holidays.</p>
+      <ul class="list-disc list-inside text-gray-700">
+        <li>Mon - Fri: 2pm - 10pm</li>
+        <li>Sat: 2pm - 11pm</li>
+        <li>Sun: 2pm - 9pm</li>
+      </ul>
+    </article>
+
+  </section>
+</main>
 {% endblock %}

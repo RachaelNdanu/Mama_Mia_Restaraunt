@@ -1,13 +1,33 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load humanize %}
+
 {% block content %}
-  <h1>Menu</h1>
-  <div class="column">
+<section class="p-6 max-w-7xl mx-auto">
+  <h1 class="text-4xl font-bold text-yellow-800 mb-6">Our Menu</h1>
+
+  <!-- 🔍 Category Filters -->
+  <div class="mb-8 space-x-4 text-lg">
+    <a href="{% url 'menu' %}" class="hover:underline {% if not selected_category %}font-bold text-yellow-700{% endif %}">All</a>
+    <a href="?category=starter" class="hover:underline {% if selected_category == 'starter' %}font-bold text-yellow-700{% endif %}">Starters</a>
+    <a href="?category=main" class="hover:underline {% if selected_category == 'main' %}font-bold text-yellow-700{% endif %}">Main Courses</a>
+    <a href="?category=dessert" class="hover:underline {% if selected_category == 'dessert' %}font-bold text-yellow-700{% endif %}">Desserts</a>
+    <a href="?category=drink" class="hover:underline {% if selected_category == 'drink' %}font-bold text-yellow-700{% endif %}">Drinks</a>
+  </div>
+
+  <!-- 📋 Menu Items Grid -->
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
     {% for item in main_data %}
-      <p>
-        <a href="{% url 'menu_item' item.pk %}">{{ item.name }}</a>
-        <span class="menu-price">${{ item.price }}.00</span>
-      </p>
+      <div class="bg-white rounded-lg shadow hover:shadow-lg transition p-4">
+        <img src="{% static 'img/menu_items/' %}{{ item.name }}.jpg" alt="{{ item.name }}" class="rounded w-full h-48 object-cover mb-4">
+        <h3 class="text-xl font-semibold text-gray-800">{{ item.name }}</h3>
+        <p class="text-yellow-600 font-bold mb-2">Ksh {{ item.price|intcomma }}.00</p>
+        <p class="text-gray-600 mb-3 text-sm">{{ item.description|truncatewords:15 }}</p>
+        <a href="{% url 'menu_item' item.pk %}" class="text-blue-600 hover:underline text-sm">View details →</a>
+      </div>
+    {% empty %}
+      <p class="text-red-500 col-span-full">No menu items found for this category.</p>
     {% endfor %}
   </div>
+</section>
 {% endblock %}

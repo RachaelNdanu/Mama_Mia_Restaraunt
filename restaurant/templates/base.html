@@ -1,33 +1,50 @@
-{% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<head>
+  {% load static %}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}Mama Mia Restaurant{% endblock %}</title>
 
-    <title>Little Lemon</title>
-    <meta name="description" content="A brief description" />
-    <meta name="author" content="Based in Chicago, Illinois, Little Lemon is a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist." />
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-    <link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.ico' %}" />
+  <!-- Favicon (optional) -->
+  <link rel="icon" href="{% static 'img/favicon.png' %}" />
 
-    <link rel="preload" as="style" href="{% static 'css/style.css' %}" onload="this.rel = 'stylesheet'" />
+  <style>
+    h1, h2, h3 {
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-800 font-sans">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Karla&family=Markazi+Text:wght@500&display=swap" rel="stylesheet" />
-  </head>
+  <!-- Header / Navbar -->
+  <header class="bg-yellow-100 shadow-md">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col items-center justify-center text-center">
+      <a href="{% url 'home' %}" class="text-4xl font-extrabold text-yellow-800 tracking-wide mb-2 hover:text-yellow-900">
+        Mama Mia 🍽️
+      </a>
+      <nav class="space-x-4 text-gray-700 font-medium">
+        <a href="{% url 'home' %}" class="hover:text-yellow-900">Home</a>
+        <a href="{% url 'menu' %}" class="hover:text-yellow-900">Menu</a>
+        <a href="{% url 'book' %}" class="hover:text-yellow-900">Book</a>
+        <a href="{% url 'about' %}" class="hover:text-yellow-900">About</a>
+        <a href="{% url 'contact' %}" class="hover:text-yellow-900">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-  <body>
-    {% include 'partials/_header.html' %}
+  <!-- Main Content -->
+  <main class="min-h-screen py-10 px-4 md:px-8 max-w-7xl mx-auto">
+    {% block content %}{% endblock %}
+  </main>
 
-    <main>
-      {% block content %}
+  <!-- Footer -->
+  <footer class="bg-yellow-100 text-center py-4 text-sm text-gray-600">
+    <p>&copy; {{ now|date:"Y" }} Mama Mia Restaurant. All rights reserved.</p>
+  </footer>
 
-      {% endblock %}
-    </main>
-
-    {% include 'partials/_footer.html' %}
-  </body>
+</body>
 </html>

@@ -1,24 +1,39 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load humanize %}
+
 {% block content %}
-  <section>
-    <article>
-      <h1>Menu item</h1>
-      <span>
-        <a href="{% url 'home' %}">Home</a> /
-        <a href="{% url 'menu' %}">Menu</a> /
-        {{ menu_item.name }}
-      </span>
-      <div class="row">
-        <div class="column">
-          <h2>{{ menu_item.name }}</h2>
-          <p>Price: ${{ menu_item.price }}.00</p>
-          <p>{{ menu_item.description }}</p>
-        </div>
-        <div class="column">
-          <img src="{% static 'img/menu_items/'|add:menu_item.name|add:'.jpg' %}" alt="Image of {{ menu_item.name }}" />
-        </div>
+<section class="max-w-4xl mx-auto p-6">
+  <article class="bg-white shadow-md rounded-lg p-6">
+    <!-- Breadcrumb -->
+    <nav class="text-sm text-gray-500 mb-4">
+      <a href="{% url 'home' %}" class="hover:text-blue-600">Home</a> /
+      <a href="{% url 'menu' %}" class="hover:text-blue-600">Menu</a> /
+      <span class="text-gray-700 font-semibold">{{ menu_item.name }}</span>
+    </nav>
+
+    <!-- Menu Item Details -->
+    <div class="grid md:grid-cols-2 gap-8 items-start">
+      <div>
+        <h1 class="text-3xl font-bold text-gray-800 mb-2">{{ menu_item.name }}</h1>
+        <p class="text-lg text-green-700 font-semibold mb-4">Price: Ksh {{ menu_item.price|intcomma }}.00</p>
+        <p class="text-gray-700 leading-relaxed">{{ menu_item.description }}</p>
       </div>
-    </article>
-  </section>
+
+      <div>
+        <img src="{% static 'img/menu_items/' %}{{ menu_item.name }}.jpg"
+             alt="Image of {{ menu_item.name }}"
+             class="w-full rounded-lg shadow-sm border"
+             onerror="this.style.display='none';" />
+      </div>
+    </div>
+
+    <!-- Back to Menu -->
+    <div class="mt-6">
+      <a href="{% url 'menu' %}" class="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+        ← Back to Menu
+      </a>
+    </div>
+  </article>
+</section>
 {% endblock %}
