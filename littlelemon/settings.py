@@ -2,11 +2,22 @@
 
 from pathlib import Path
 import os
-import distutils.util
 from dotenv import load_dotenv
 
 # Load environment variables from .env file
 load_dotenv()
+
+# Helper function to convert string to boolean (replacement for distutils.util.strtobool)
+def str_to_bool(value):
+    """Convert string to boolean value."""
+    if isinstance(value, bool):
+        return value
+    if value.lower() in ('yes', 'true', 't', 'y', '1'):
+        return True
+    elif value.lower() in ('no', 'false', 'f', 'n', '0'):
+        return False
+    else:
+        raise ValueError(f"Invalid truth value: {value}")
 
 # Access environment variables
 DJANGO_SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
@@ -20,7 +31,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = DJANGO_SECRET_KEY or 'fallback-secret-key'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(distutils.util.strtobool(os.getenv("DJANGO_DEBUG", "False")))
+DEBUG = str_to_bool(os.getenv("DJANGO_DEBUG", "False"))
 
 # Allow multiple hosts split by comma from the .env file
 ALLOWED_HOSTS = DJANGO_ALLOWED_HOSTS.split(",") if DJANGO_ALLOWED_HOSTS else ['127.0.0.1', 'localhost']
