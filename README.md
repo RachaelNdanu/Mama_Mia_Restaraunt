@@ -1,136 +1,156 @@
-# Django Restaurant Website Demo
+# Django Restaurant Website Demo 🍽️
 
-This demo app provides a basic website for a fictitious restaurant allowing customers to view the menu, learn more about the restaurant, and make a reservation.
+![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Python Version](https://img.shields.io/badge/python-3.12%2B-blue.svg)
 
-The app is built using [Django](https://www.djangoproject.com/) web framework using Python, SQLite, HTML, and CSS.
 
----
+This demo app provides a basic website for a fictitious restaurant, allowing customers to view the menu, learn more about the restaurant, and make a reservation.
 
-## Screenshots
+Built using the [Django](https://www.djangoproject.com/) web framework (Python), SQLite, HTML, CSS, and Tailwind.
+
+## 🌄 Screenshots
 
 ![dan-poynor-django-restaurant-app](https://github.com/danpoynor/django-restaurant-website-demo/assets/764270/e0494afd-fc3e-42bc-81f3-63f664d62532)
 
 ---
 
-## Features
+## ✨ Features
 
-The application includes the following features:
-
-- **Home Page**: The landing page of the website.
-- **About Page**: Provides information about the restaurant.
-- **Booking Page**: Allows customers to make a booking.
-- **Menu Page**: Displays the restaurant's menu.
-- **Menu Item Page**: Provides details about a specific menu item.
-
----
-
-## Views
-
-The application includes the following views:
-
-- `home`: Renders the home page.
-- `about`: Renders the about page.
-- `book`: Renders the booking page and handles the booking form submission.
-- `menu`: Renders the menu page.
-- `display_menu_item`: Renders a specific menu item page.
+- **Home Page** – Landing page with hero banner and feature sections.
+- **About Page** – Learn more about the restaurant’s story.
+- **Booking Page** – Reserve a table using a Django form.
+- **Menu Page** – Browse available meals.
+- **Menu Item Page** – View individual meal details.
+- **Admin Interface** – Manage bookings and menu items.
+- **Responsive Design** – Works well on desktop and mobile.
 
 ---
 
-## Forms
+## 📦 Installation and Setup
 
-The application includes a basic `BookingForm` in forms.py that allows customers to make a booking. Fields are based on the `Booking` model created in models.py.
+Follow these steps to run the project locally:
 
----
+### 1. Clone the repository:
 
-## Installation and Setup
-
-Follow these steps to get the project set up on your local machine:
-
-1. Clone the repository:
-
-```sh
+```bash
 git clone <repository-url>
-```
-
-2. Navigate to the project directory:
-
-```sh
 cd <project-directory>
 ```
 
-3. Create a virtual environment and activate it:
+### 2. Create and activate a virtual environment:
 
-```sh
+```bash
 python3 -m venv env
-source env/bin/activate
+source env/bin/activate  # Windows: env\Scripts\activate
 ```
 
-4. Install the required packages:
+### 3. Install dependencies:
 
-```sh
+```bash
 pip install -r requirements.txt
 ```
 
-5. Run the migrations:
+### 4. Set up environment variables:
 
-```sh
+Create your `.env` file based on the provided example:
+
+```bash
+nano .env
+```
+
+To get the secret key, run the following command in your activated environment:
+(You only need to do this once, and you can reuse the key later.)
+
+```bash
+python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
+```
+
+and paste it into your `.env` file:
+
+```env
+DJANGO_SECRET_KEY=your-secret-key
+DJANGO_DEBUG=True
+DJANGO_ALLOWED_HOSTS=127.0.0.1,localhost
+```
+
+### 5. Run migrations:
+
+```bash
 python manage.py migrate
 ```
 
-6. Create a superuser for the Django admin interface:
+### 6. Create an admin user:
 
-```sh
+```bash
 python manage.py createsuperuser
 ```
 
-Follow the prompts to set a username, email, and password for the superuser.
+Follow the prompts to complete the setup.
 
-7. Start the development server:
+### 7. Run the development server:
 
-```sh
+```bash
 python manage.py runserver
 ```
 
-The application will be available at `http://localhost:8000`.
+Open [http://127.0.0.1:8000](http://127.0.0.1:8000) in your browser to view the app.
 
 ---
 
-## Admin Area
+## ⚙️ Environment Configuration
 
-The Django admin area is used to manage menu items for the restaurant. You can add, edit, and delete menu items through the admin interface.
+This project uses a `.env` file for local configuration. Example:
 
-To access the admin area:
+```env
+DJANGO_SECRET_KEY=your-secret-key
+DJANGO_DEBUG=True
+DJANGO_ALLOWED_HOSTS=127.0.0.1,localhost
+```
 
-1. Start the development server:
+A sample `.env.example` file is included. **Do not commit `.env`** to version control.
 
-```sh
+---
+
+## 🖼️ Static Files and Images
+
+Static assets (CSS, images) are located under:
+
+```
+restaurant/static/
+```
+
+Images are stored in:
+
+```
+restaurant/static/img/
+```
+
+During development (`DEBUG=True`), Django will serve these automatically.
+
+---
+
+## 🔐 Admin Area
+
+To access the Django admin:
+
+1. Start the server:
+
+```bash
 python manage.py runserver
 ```
 
-2. Open a web browser and navigate to `http://localhost:8000/admin`.
+2. Visit [http://127.0.0.1:8000/admin](http://127.0.0.1:8000/admin)
 
-3. Log in with your admin credentials. If you haven't created an admin user yet, you can do so using the following command:
+3. Log in using your superuser credentials.
 
-```sh
-python manage.py createsuperuser
-```
-
-Once logged in, you can manage menu items by clicking on "Menus" under the "RESTAURANT" section.
+You can manage menu items and bookings under the **RESTAURANT** section.
 
 ---
 
-## Tests
+## 🧪 Running Tests
 
-The application includes 21 tests for the models, views, and forms and cover a range of scenarios, including checking that the correct templates are used, the correct context data is passed to the templates, and the forms behave as expected.
+The app includes tests for models, views, and forms. To run them:
 
----
-
-### Running Tests
-
-To run these tests, use the following command:
-
-```sh
+```bash
 python manage.py test
 ```
-
-This will run all the tests and provide a summary of the results.
